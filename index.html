@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custo Tab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+
+    <div class="container">
+        <div class="header-spacer"></div>
+
+        <main class="main-dashboard" id="dashboard">
+    
+            <aside class="widget anime-widget draggable-item" draggable="true" id="widget-anime">
+                <div class="anime-banner">
+                    <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=400&q=80" alt="Anime Vibe" class="anime-img">
+                </div>
+                <div class="anime-header">
+                    <h2>Top 5 Anime</h2>
+                </div>
+                <div class="anime-section">
+                    <h3>Favorites</h3>
+                    <ul>
+                        <li>1. Attack on Titan</li>
+                        <li>2. Death Note</li>
+                        <li>3. Steins Gate</li>
+                        <li>4. Fullmetal Alchemist Brotherhood</li>
+                        <li>5. Hunter x Hunter</li>
+                    </ul>
+                </div>
+            </aside>
+
+        
+            <section class="center-content draggable-item" draggable="true" id="widget-center">
+                <div id="greeting" class="greeting-display">Hello</div>
+                <div id="clock" class="clock-display">12:31 PM</div>
+                <div id="date" class="date-display">Tuesday, August 18</div>
+
+                <form action="https://www.google.com/search" method="GET" class="search-form">
+                    <input type="text" name="q" placeholder="Search the web..." class="search-input" autocomplete="off" required>
+                </form>
+
+                <div class="shortcuts-grid">
+                    <a href="https://www.youtube.com" target="_blank" class="shortcut-icon" title="YouTube">
+                        <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="shortcut-icon" title="GitHub">
+                        <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://reddit.com" target="_blank" class="shortcut-icon" title="Reddit">
+                        <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-1.488 1.23-1.46.13-2.738.868-3.565 1.989.176.49.277 1.025.277 1.583 0 3.011-3.12 5.45-6.969 5.45s-6.968-2.439-6.968-5.45c0-.558.101-1.093.277-1.583C1.728 8.09 1.15 7.352 1.15 5.993c0-.688.562-1.249 1.25-1.249.522 0 .97.327 1.152.793.682-.366 1.489-.6 2.366-.677l.632-3.155a.44.44 0 0 1 .524-.343l2.256.478c.381-.303.864-.488 1.39-.488 1.233 0 2.234 1.001 2.234 2.234 0 .43-.124.83-.337 1.173.877.077 1.684.311 2.366.677.182-.466.63-.793 1.152-.793z"/></svg>
+                    </a>
+                    <a href="https://gmail.com" target="_blank" class="shortcut-icon" title="Gmail">
+                        <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                </div>
+            </section>
+
+            
+            <aside class="widget note-widget draggable-item" draggable="true" id="widget-note">
+                <h3>Quick Note</h3>
+                <textarea id="quick-note" placeholder="Type your notes here..."></textarea>
+                <div class="note-actions">
+                    <button id="clear-note" class="btn-clear">Clear Notes</button>
+                    <button id="reset-layout" class="btn-reset">Reset Layout</button>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
