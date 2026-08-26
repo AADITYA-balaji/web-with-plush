@@ -16,7 +16,7 @@
         <div class="header-spacer"></div>
 
         <main class="main-dashboard" id="dashboard">
-    
+            
             <aside class="widget anime-widget draggable-item" draggable="true" id="widget-anime">
                 <div class="anime-banner">
                     <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=400&q=80" alt="Anime Vibe" class="anime-img">
@@ -36,7 +36,7 @@
                 </div>
             </aside>
 
-        
+            
             <section class="center-content draggable-item" draggable="true" id="widget-center">
                 <div id="greeting" class="greeting-display">Hello</div>
                 <div id="clock" class="clock-display">12:31 PM</div>
@@ -67,8 +67,11 @@
                 <h3>Quick Note</h3>
                 <textarea id="quick-note" placeholder="Type your notes here..."></textarea>
                 <div class="note-actions">
-                    <button id="clear-note" class="btn-clear">Clear Notes</button>
-                    <button id="reset-layout" class="btn-reset">Reset Layout</button>
+                    <button id="clear-note" class="btn-clear">Clear</button>
+                    <button id="rotate-wallpaper" class="btn-wallpaper">Wallpaper</button>
+                    <button id="upload-wallpaper-btn" class="btn-upload">Upload</button>
+                    <input type="file" id="wallpaper-file-input" accept="image/*" style="display: none;">
+                    <button id="reset-layout" class="btn-reset">Reset</button>
                 </div>
             </aside>
         </main>
