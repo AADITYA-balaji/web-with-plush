@@ -1,3 +1,89 @@
+const wallpapers = [
+    { url: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=2000&q=80', name: 'Mountains / Starry Night' },
+    { url: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=2000&q=80', name: 'Space / Nebula' },
+    { url: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=2000&q=80', name: 'Deep Space Stars' },
+    { url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=80', name: 'Snowy Mountain Peak' },
+    { url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80', name: 'Tropical Beach' },
+    { url: 'https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?auto=format&fit=crop&w=2000&q=80', name: 'Misty Forest' },
+    { url: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=2000&q=80', name: 'Pine Forest Sunset' }
+];
+
+function applyWallpaper(index) {
+    const backgroundOverlay = document.querySelector('.background-overlay');
+    if (!backgroundOverlay) return;
+    
+    const selectedWallpaper = wallpapers[index];
+    backgroundOverlay.style.backgroundImage = `url('${selectedWallpaper.url}')`;
+}
+
+function initWallpaper() {
+    const customWallpaper = localStorage.getItem('customWallpaper');
+    if (customWallpaper) {
+        const backgroundOverlay = document.querySelector('.background-overlay');
+        if (backgroundOverlay) {
+            backgroundOverlay.style.backgroundImage = `url('${customWallpaper}')`;
+        }
+        return;
+    }
+
+    const savedIndex = localStorage.getItem('wallpaperIndex');
+    if (savedIndex !== null) {
+        applyWallpaper(parseInt(savedIndex, 10));
+    } else {
+        const now = new Date();
+        const start = new Date(now.getFullYear(), 0, 0);
+        const diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
+        const oneDay = 1000 * 60 * 60 * 24;
+        const dayOfYear = Math.floor(diff / oneDay);
+        const defaultIndex = dayOfYear % wallpapers.length;
+        applyWallpaper(defaultIndex);
+    }
+}
+
+initWallpaper();
+
+const wallpaperButton = document.getElementById('rotate-wallpaper');
+wallpaperButton.addEventListener('click', () => {
+    localStorage.removeItem('customWallpaper'); // switch back to rotation pool
+    
+    let currentIndex = parseInt(localStorage.getItem('wallpaperIndex'), 10);
+    if (isNaN(currentIndex)) {
+        const now = new Date();
+        const start = new Date(now.getFullYear(), 0, 0);
+        const diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
+        currentIndex = Math.floor(diff / (1000 * 60 * 60 * 24)) % wallpapers.length;
+    }
+
+    const nextIndex = (currentIndex + 1) % wallpapers.length;
+    localStorage.setItem('wallpaperIndex', nextIndex);
+    applyWallpaper(nextIndex);
+});
+
+const uploadBtn = document.getElementById('upload-wallpaper-btn');
+const fileInput = document.getElementById('wallpaper-file-input');
+
+uploadBtn.addEventListener('click', () => {
+    fileInput.click();
+});
+
+fileInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const base64Image = e.target.result;
+            localStorage.setItem('customWallpaper', base64Image);
+            localStorage.removeItem('wallpaperIndex');
+            
+            const backgroundOverlay = document.querySelector('.background-overlay');
+            if (backgroundOverlay) {
+                backgroundOverlay.style.backgroundImage = `url('${base64Image}')`;
+            }
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
 function updateClock() {
     const now = new Date();
     
@@ -45,15 +131,14 @@ clearButton.addEventListener('click', () => {
     localStorage.removeItem('savedNote');
 });
 
+
 const dashboard = document.getElementById('dashboard');
 const draggableItems = document.querySelectorAll('.draggable-item');
 const resetButton = document.getElementById('reset-layout');
 
 let draggedItem = null;
-
 const defaultOrder = ['widget-anime', 'widget-center', 'widget-note'];
 
-// Load saved dashboard order from localStorage
 const savedOrder = localStorage.getItem('dashboardOrder');
 if (savedOrder) {
     const orderIds = JSON.parse(savedOrder);
